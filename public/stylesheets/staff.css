@@ -1,0 +1,209 @@
+body .navbar-custom {
+	background-color: #ac0000c7;
+	border-color: #ffffffcc;
+	border-bottom: #425766 3px solid;
+	width: 100%;
+}
+
+body .navbar-custom .navbar-brand {
+	color: #ffffffcc;
+}
+
+body .navbar-custom .navbar-brand:focus,
+body .navbar-custom .navbar-brand:hover {
+	color: #ffffff;
+}
+
+body .navbar-custom .navbar-text {
+	color: #d7e2e9;
+}
+
+body .navbar-custom .navbar-nav li a {
+	color: #d7e2e9;
+}
+
+body .navbar-custom .navbar-nav li a:focus,
+body .navbar-custom .navbar-nav li a:hover {
+	color: #ffffff;
+	background-color: #ba0000c7 !important;
+}
+
+body .navbar-custom .navbar-nav li a.highlight:focus,
+body .navbar-custom .navbar-nav li a.highlight:hover,
+body .navbar-custom .navbar-nav li a:active {
+	color: #ffffff;
+	background-color: #ba0000c7;
+}
+
+body .navbar-custom .navbar-nav li div a {
+	text-decoration: none !important;
+	color: #d7e2e9;
+}
+
+body .navbar-custom .navbar-nav li div a .btn {
+	color: #d7e2e9 !important;
+	background-color: #ac0000c7 !important;
+}
+
+body .navbar-custom .navbar-nav li div .dropdown-menu {
+	background-color: #ac0000c7;
+}
+
+body .navbar-custom .navbar-nav li div .dropdown-menu .divider {
+	background-color: #ac0000c7;
+}
+
+body .navbar-custom .navbar-nav li div .dropdown-menu a {
+	color: #d7e2e9;
+}
+
+body .navbar-custom .navbar-nav li div .dropdown-menu a:focus,
+body .navbar-custom .navbar-nav li div .dropdown-menu a:hover {
+	color: #ffffff;
+	background-color: #ba0000c7;
+}
+
+body .navbar-custom .navbar-toggle {
+	border-color: #ffffffcc;
+}
+
+body .navbar-custom .navbar-toggle :focus,
+body .navbar-custom .navbar-toggle :hover {
+	background-color: #ffffff;
+}
+
+body .navbar-custom .navbar-toggle .icon-bar {
+	background-color: #d7e2e9;
+}
+
+body .navbar-custom .navbar-collapse,
+body .navbar-custom .navbar-form {
+	border-color: #ffffffcc;
+}
+
+body .navbar-custom .custom-toggler {
+	margin: 1px;
+	border-color: #ffffffcc;
+	color: #ffffffcc;
+}
+
+body .navbar-custom .custom-toggler:hover {
+	background-color: #ba0000c7;
+	border-color: #ffffffcc;
+	color: #d7e2e9;
+}
+
+body div div a {
+	color: #d7e2e9;
+}
+
+body table tr {
+	text-align: center;
+}
+
+body table a:focus,
+body table a:hover {
+	color: #ffffff;
+	background-color: #ba0000c7;
+}
+
+body table a {
+	color: #d7e2e9;
+	background-color: #e74c3c;
+	border-color: #c0392b;
+}
+
+body div div a:focus,
+body div div a:hover {
+	text-decoration: none;
+	color: #ffffff;
+	background-color: #ba0000c7;
+}
+
+body .content .header {
+	background-color: #81B3D5;
+}
+
+body .footer {
+	background-color: #333333;
+	border-color: #ffffffcc;
+	text-align: center;
+	color: #d7e2e9;
+	width: 100%;
+}
+
+body .footer a {
+	color: #d7e2e9;
+	text-decoration: none;
+}
+
+body .footer a:hover {
+	color: #ffffff;
+}
+
+/* custom */
+.main-color-bg {
+	background-color: #e74c3c !important;
+	border-color: #c0392b !important;
+	color: #ffffff;
+}
+
+/* Header */
+#header {
+	background: #e74c3c;
+	color: #e1e1e1;
+	padding-top: 15px;
+	padding-bottom: 10px;
+	margin-top: 0;
+}
+
+/* breadcrumb */
+.breadcrumb {
+	background: #cccccc;
+	color: #333333;
+	margin-top: 10px;
+}
+
+.breadcrumb a {
+	color: #333333;
+}
+
+/* progress */
+.progress-bar {
+	border: 1px solid #e74c3c;
+	background: #333333;
+	color: #ffffff;
+}
+
+.stats {
+	border: 1px solid #cccccc;
+	padding: 5px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.dash-card {
+	text-align: center;
+}
+
+.card-table {
+	margin-top: 10px;
+}
+
+.content-main {
+	margin-top: 8px;
+}
+
+@media (max-width: 992px) {
+	body table tr .hide-btn {
+		display: none;
+	}
+}
+
+@media (max-width: 576px) {
+	body table tr .hide-btn,
+	body table tr .hide-id,
+	body table tr .hide-name {
+		display: none;
+	}
+}
