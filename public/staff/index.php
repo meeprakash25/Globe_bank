@@ -4,43 +4,6 @@
 <?php include(SHARED_PATH . '/staff_header.php') ?>
 
 
-
-<section id="breadcrumb">
-  <div class="container">
-    <ol class="breadcrumb">
-      <li class="active">  <?php echo h($page_title); ?></li>
-    </ol>
-  </div>
-</section>
-
-<section id="main">
-  <div class="container content-main">
-    <div class="row">
-      <div class="col-md-3">
-          <div class="list-group">
-              <a href="#" class="list-group-item list-group-item-action active  main-color-bg">
-                <i class="fas fa-cog"></i> Dashboard
-              </a>
-              <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-list"></i> Subjects <span class="badge">20</span></a>
-              <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-pencil-alt"></i> Pages <span class="badge">40</span></a>
-              <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-user"></i> Admins <span class="badge">5</span></a>
-            </div>
-            <div class="stats">
-            <div class="well">
-              <h5>Disk space used</h5>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">70%</div>
-                  </div>
-            </div>
-            <div class="well">
-              <h5>Bandwidth used</h5>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">30%</div>
-                  </div>
-            </div>
-          </div>
-      </div>
-
       <div class="col-md-9">
           <div class="card">
               <div class="card-header main-color-bg">Website Overview</div>

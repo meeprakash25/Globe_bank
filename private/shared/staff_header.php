@@ -21,7 +21,7 @@
 
     <nav class="navbar navbar-expand-md navbar-custom py-0 sticky-top" id="my-navbar">
       <div class="container">
-        <a class="navbar-brand" href="index.php">
+        <a class="navbar-brand" href="<?php echo url_for('/staff/index.php'); ?>">
           <img src="<?php echo url_for('/images/google.svg'); ?>" width="20" height="20" alt="">
           Globe Bank
         </a>
@@ -67,7 +67,7 @@
   <header id="header">
     <div class="container">
       <div class="row">
-        <div class="col-md-10 col-sm-10 col-xs-10">
+        <div class="col-8">
           <h4><i class="fas fa-cog"> </i> <?php echo $page_title; ?> <small><h6>Manage
                 <?php if ($page_title == 'Staff Menu') {
                     echo "Your Website";
@@ -76,16 +76,16 @@
                   }?>
            <h6></small></h4>
           </div>
-          <div class="col-md-2 col-sm-2 col-xs-2 text-right">
+          <div class="col-4 text-right">
             <div class="dropdown show">
-              <a class="text-left py-2 rounded btn-sm dropdown-toggle" href="" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="btn btn-sm dropdown-toggle" href="" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Create
               </a>
 
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" data-toggle="modal" href="#addSubject">Create Subject</a>
-                <a class="dropdown-item" data-toggle="modal" href="#addPage">Create Page</a>
-                <a class="dropdown-item" data-toggle="modal" data-target="#addAdmin" href="#addAdmin">Create Admin</a>
+              <div class="dropdown-menu dropdown-menu-right px-1"  id="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                <a class="dropdown-item" data-toggle="modal" href="#add-ubject">Create Subject</a>
+                <a class="dropdown-item" data-toggle="modal" href="#add-page">Create Page</a>
+                <a class="dropdown-item" data-toggle="modal" data-target="#add-dmin" href="#addAdmin">Create Admin</a>
               </div>
             </div>
           </div>
@@ -95,3 +95,45 @@
 
 
     <div class="container content">
+
+<!-- staff top bar and sidebar contents -->
+      <section class="breadcrumb" id="breadcrumb">
+          <div class="container">
+              <div class="row">
+                <div class="col-8">
+                  <?php echo h($page_title); ?>
+                </div>
+                <div class="col-4 text-right">
+                  <!-- <a class="btn btn-sm btn-outline-danger" data-toggle="modal" href="#new">Create Subject</a> -->
+                </div>
+            
+          </div>
+        </section>
+
+        <section id="main">
+          <div class="container content-main">
+            <div class="row">
+              <div class="col-md-3">
+                  <div class="list-group">
+                      <a href="#" class="list-group-item list-group-item-action active  main-color-bg">
+                        <i class="fas fa-cog"></i> Dashboard
+                      </a>
+                      <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-list"></i> Subjects <span class="badge float-right">20</span></a>
+                      <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-pencil-alt"></i> Pages <span class="badge float-right">40</span></a>
+                      <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-user"></i> Admins <span class="badge float-right">5</span></a>
+                    </div>
+                    <div class="stats">
+                    <div class="well">
+                      <h5>Disk space used</h5>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">70%</div>
+                          </div>
+                    </div>
+                    <div class="well">
+                      <h5>Bandwidth used</h5>
+                        <div class="progress">
+                            <div class="progress-bar" role="progressbar" style="width: 30%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">30%</div>
+                          </div>
+                    </div>
+                  </div>
+              </div>
