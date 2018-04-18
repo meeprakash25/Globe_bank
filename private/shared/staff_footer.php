@@ -23,3 +23,5 @@
     <script src="<?php echo url_for('javascripts/fontawesome-all.js'); ?>"></script>
   </body>
 </html>
+
+<?php db_disconnect($db); ?>
