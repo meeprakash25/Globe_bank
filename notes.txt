@@ -1,3 +1,3 @@
-24
+46
 
  onclick="window.location='<?php echo url_for('/staff/pages/show.php?id=' . h(u($page['id']))); ?>';"

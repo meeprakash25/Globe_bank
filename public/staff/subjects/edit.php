@@ -4,21 +4,24 @@
   if(!isset($_GET['id'])){
     redirect_to(url_for('/staff/subjects/index.php'));
   }
-  $menu_name = '';
-  $position = '';
-  $visible = '';
+
   $id = $_GET['id'];
+
   if(is_post_request()){  
-    $menu_name = $_POST['menu_name'] ?? '';
-    $position = $_POST['position'] ?? '';
-    $visible = $_POST['visible'] ?? '';
+    //process form request
+    $subject = [];
+    $subject['id'] = $id;
+    $subject['menu_name'] = $_POST['menu_name'] ?? '';
+    $subject['position'] = $_POST['position'] ?? '';
+    $subject['visible'] = $_POST['visible'] ?? '';
     
-    echo "Form parameters <br>";
-    echo "Menu name: " . $menu_name . "<br>";
-    echo "Position: " . $position . "<br>";
-    echo "Visible: " . $visible . "<br>";
-    }else{
-      // redirect_to(url_for('/staff/subjects/index.php'));
+    $result = update_subject($subject);
+    redirect_to(url_for('/staff/subjects/show.php?id=' . $id));
+
+  }else{
+      $subject = find_subject_by_id($id);
+
+      $subject_count = count_all_subjects();
   }
 ?>
 
@@ -33,21 +36,28 @@
                     <form action="<?php echo url_for('/staff/subjects/edit.php?id=' . h(u($id))); ?>" method="post">    
                       <div class="form-group">
                         <label>Subject Title</label>
-                        <input type="text" name="menu_name" class="form-control" placeholder="Subject Title" value="<?php echo h($menu_name); ?>">
+                        <input type="text" name="menu_name" class="form-control" placeholder="Subject Title" value="<?php echo h($subject['menu_name']); ?>">
                       </div>
                       <div class="form-group">
                         <label>Position</label>
                         <select class="custom-select" name="position">
-                          <option selected>Select</option>
-                          <option value="1">1</option>
-                          <option value="2">2</option>
-                          <option value="3">3</option>
+                        <?php 
+                          for ($i=1; $i <= $subject_count; $i++) { 
+                            echo "<option value=\"{$i}\"";
+                            if ($subject['position'] == $i) {
+                              echo " selected";
+                            }
+                            echo ">{$i}</option>";
+                          }
+                        ?>
+                       
                         </select>
                       </div>
                       <div class="form-group">
                         <label>
                             <input type="hidden" name="visible" value="0" />
-                            <input type="checkbox" name="visible" value="1"/> Published
+                            <input type="checkbox" name="visible" value="1" <?php if($subject['visible'] == "1") { echo "checked";}; ?> /> Published
+                            
                           </label>
                     </div>   
                     <div class="row">
@@ -71,6 +81,5 @@
 
 
 
-<?php include(PUBLIC_PATH . '/staff/subjects/new.php') ?>
 <?php include(SHARED_PATH . '/staff_footer.php') ?>
 

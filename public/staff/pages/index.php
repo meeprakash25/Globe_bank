@@ -1,13 +1,6 @@
 <?php require_once('../../../private/initialize.php'); ?>
 
-<?php
-  $pages = [
-    ['id' => '1', 'position' => '1', 'visible' => '1', 'menu_name' => 'Globe Bank'],
-    ['id' => '2', 'position' => '2', 'visible' => '1', 'menu_name' => 'History'],
-    ['id' => '3', 'position' => '3', 'visible' => '1', 'menu_name' => 'Leadership'],
-    ['id' => '4', 'position' => '4', 'visible' => '1', 'menu_name' => 'Contact us'],
-  ];
-?>
+<?php $page_set = find_all_pages(); ?>
 
 <?php $page_title = 'Pages'; ?>
 <?php include(SHARED_PATH . '/staff_header.php') ?>
@@ -21,24 +14,30 @@
                     <table class="table table-striped table-hover">
                         <tr>
                           <th class="hide-id">ID</th>
+                          <th class="hide-id">Subject</th>
                           <th class="hide-position">Position</th>
-                          <th class="hide-visible">Visible</th>
+                          <th class="hide-visible">Published</th>
                           <th>Name</th>
-                          <th colspan="3">Action</th>
+                          <th colspan="2">Action</th>
                         </tr>
 
-                        <?php foreach($pages as $page) { ?>
+                        <?php while($page = mysqli_fetch_assoc($page_set)) { ?>
+                        
                           <tr>
                             <td class="hide-id"><?php echo h($page['id']); ?></td>
+                            <?php $subject = find_subject_by_id($page['subject_id']); ?>
+                            <td class="hide-id"><?php echo h($subject['menu_name']); ?></td>
                             <td class="hide-position"><?php echo h($page['position']); ?></td>
-                            <td class="hide-visible"><?php echo $page['visible'] == 1 ? 'true' : 'false'; ?></td>
+                            <td class="hide-visible"><?php echo $page['visible'] == 1 ? 'Yes' : 'No'; ?></td>
                             <td><?php echo h($page['menu_name']); ?></td>
-                            <td><a class="btn btn-xs" href="<?php echo url_for('/staff/pages/show.php?id=' . h(u($page['id']))); ?>">View</a></td>
-                            <td class="hide-btn"><a class="btn btn-xs" href="<?php echo url_for('/staff/pages/edit.php?id=' . h(u($page['id']))); ?>">Edit</a></td>
-                            <td class="hide-btn"><a class="btn btn-xs" href="<?php echo url_for('/staff/pages/delete.php?id=' . h(u($page['id']))); ?>" onclick="return confirm('Are you sure?');">Delete</a></td>
+                            <td><a class="btn btn-sm" href="<?php echo url_for('/staff/pages/show.php?id=' . h(u($page['id']))); ?>">View</a></td>
+                            <td class="hide-btn"><a class="btn btn-sm" href="<?php echo url_for('/staff/pages/edit.php?id=' . h(u($page['id'])). '&subject_id=' . h(u($page['subject_id']))); ?>">Edit</a></td>
                           </tr>
                         <?php } ?>
                       </table>
+
+                      <?php mysqli_free_result($page_set); ?>
+
                 </div>
             </div>
       </div>

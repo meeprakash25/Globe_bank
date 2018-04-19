@@ -21,7 +21,7 @@
                     <div class="col-md-3">
                         <div class="card dash-card">
                             <div class="card-body">
-                                <h3><i class="fas fa-list-alt"></i> 50</h3>
+                                <h3><i class="fas fa-list-alt"></i> <?php echo count_all_subjects(); ?></h3>
                                 <h4>Subjects</h4>
 
                             </div>
@@ -30,7 +30,7 @@
                     <div class="col-md-3">
                         <div class="card dash-card">
                             <div class="card-body">
-                                <h3><i class="fas fa-pencil-alt"></i> 250</h3>
+                                <h3><i class="fas fa-pencil-alt"></i> <?php echo count_all_pages(); ?></h3>
                                 <h4>Pages</h4>
 
                             </div>

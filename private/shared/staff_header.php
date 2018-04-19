@@ -12,6 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="<?php echo url_for('/stylesheets/bootstrap.min.css'); ?>" media="all">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo url_for('/stylesheets/google-fonts.css') ?>" media="all">
     <link rel="stylesheet" href="<?php echo url_for('/stylesheets/staff.css') ?>" media="all">
     <script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>
 
@@ -83,7 +84,7 @@
               </a>
 
               <div class="dropdown-menu dropdown-menu-right px-1"  id="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" data-toggle="modal" href="#add-ubject">Create Subject</a>
+                <a class="dropdown-item" data-toggle="modal" href="#add-subject">Create Subject</a>
                 <a class="dropdown-item" data-toggle="modal" href="#add-page">Create Page</a>
                 <a class="dropdown-item" data-toggle="modal" data-target="#add-dmin" href="#addAdmin">Create Admin</a>
               </div>
@@ -118,9 +119,9 @@
                       <a href="#" class="list-group-item list-group-item-action active  main-color-bg">
                         <i class="fas fa-cog"></i> Dashboard
                       </a>
-                      <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-list"></i> Subjects <span class="badge float-right">20</span></a>
-                      <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-pencil-alt"></i> Pages <span class="badge float-right">40</span></a>
-                      <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-user"></i> Admins <span class="badge float-right">5</span></a>
+                      <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-list"></i> Subjects <span class="badge badge-pill badge-dark float-right"><?php echo count_all_subjects(); ?></span></a>
+                      <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-pencil-alt"></i> Pages <span class="badge badge-pill badge-dark float-right"><?php echo count_all_pages(); ?></span></a>
+                      <a href="#" class="list-group-item list-group-item-action"><i class="fas fa-user"></i> Admins <span class="badge badge-pill badge-dark float-right">5</span></a>
                     </div>
                     <div class="stats">
                     <div class="well">

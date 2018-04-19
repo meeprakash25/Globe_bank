@@ -7,12 +7,12 @@
         </div>
 
         <script>
-          CKEDITOR.replace( 'body' );
+          CKEDITOR.replace( 'content' );
         </script>
         
       </div>
       <div class="footer footer-copyright py-3 text-center">
-        &copy; <?php echo Date("Y"); ?>, <a href="index.php">Globe Bank</a>
+        &copy; <?php echo Date("Y"); ?>, <a href="<?php echo url_for('/staff/index.php'); ?>">Globe Bank</a>
       </div>
 
       

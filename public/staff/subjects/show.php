@@ -5,9 +5,9 @@
         redirect_to(url_for('/staff/subjects/index.php'));
       }
       $id = $_GET['id'];
-      $manu_name = $_GET['manu_name'] ?? '';
-      $position = $_GET['Position'] ?? '';
-      $visible = $_GET['visible'] ?? '';
+
+      $subject = find_subject_by_id($id);
+
 ?>
 
 <?php $page_title = 'Subject'; ?>
@@ -15,36 +15,35 @@
 
       <div class="col-md-9">
             <div class="card">
-                <div class="card-header main-color-bg">View subject:</div>
+                <div class="card-header main-color-bg">View subject: <?php echo h($subject['menu_name']); ?></div>
                 <div class="card-body">
 
-                   <form action="" method="">    
+                   <form action="" method="">
+                      <div class="row">
+                        <div class="col-8">
+                          <a class="btn" href="<?php echo url_for('/staff/subjects/edit.php?id=' . h(u($id))); ?>">Edit</a>
+                        </div>
+                        <div class="col-4 text-right">
+                          <a class="btn" href="<?php echo url_for('/staff/subjects/delete.php?id=' . h(u($id))); ?>">Delete</a>
+                        </div>
+                      </div> 
+                      <hr>
                       <div class="form-group"> 
-                        <label>Subject ID:</label> <?php echo h(u($id)); ?>
-                      </div>
-                      <div class="form-group"> 
-                        <label>Subject Title:</label> <?php echo h(u($manu_name)); ?>
+                        <label>Subject:</label> <b><?php echo h($subject['menu_name']); ?></b>
                       </div>
                       <div class="form-group">
-                        <label>Position:</label> <?php echo h(u($position)); ?>
+                        <label>Position:</label> <?php echo h($subject['position']); ?>
                       </div>
                       <div class="form-group">
                         <label>Published: </label> <?php
-                                                      if(h(u($visible)) == 1){
+                                                      if(h($subject['visible']) == 1){
                                                         echo 'Yes';
                                                         }else{
                                                           echo 'No';
                                                         };
                                                     ?>                      
                       </div> 
-                    <div class="row">
-                      <div class="col-8">
-                        <a class="btn" href="<?php echo url_for('/staff/subjects/edit.php?id=' . h(u($id))); ?>">Edit</a>   
-                      </div>
-                      <div class="col-4 text-right">
-                        <a class="btn" href="<?php echo url_for('/staff/subjects/delete.php?id=' . h(u($id))); ?>" onclick="return confirm('Are you sure?');">Delete</a>   
-                      </div>
-                    </div>
+                    
                   </form>
                     
                 </div>

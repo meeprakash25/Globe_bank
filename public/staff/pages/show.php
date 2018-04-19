@@ -5,9 +5,8 @@
         redirect_to(url_for('/staff/pages/index.php'));
       }
       $id = $_GET['id'];
-      $manu_name = $_GET['manu_name'] ?? '';
-      $position = $_GET['Position'] ?? '';
-      $visible = $_GET['visible'] ?? '';
+
+      $page = find_page_by_id($id);
 ?>
 
 <?php $page_title = 'Page'; ?>
@@ -15,40 +14,47 @@
 
       <div class="col-md-9">
             <div class="card">
-                <div class="card-header main-color-bg">View Page: </div>
+                <div class="card-header main-color-bg">View Page: <?php echo h($page['menu_name']); ?></div>
                 <div class="card-body">
 
-                    <form action="edit.php?id=" method="post">
-                    <?php //echo $page['id']; ?>   
+                    <form action="<?php echo url_for('/staff/pages/edit.php?id=' . h(u($id))); ?>" method="post">
+                      <div class="row">
+                        <div class="col-8">
+                          <a class="btn" href="<?php echo url_for('/staff/pages/edit.php?id=' . h(u($id))); ?>">Edit</a>   
+                        </div>
+                        <div class="col-4 text-right">
+                          <a class="btn" href="<?php echo url_for('/staff/pages/delete.php?id=' . h(u($id))); ?>">Delete</a>   
+                        </div>
+                      </div> 
+                      <hr>                       
                       <div class="form-group">
-                        <div class="form-group"> 
-                        <label>Page ID:</label>  <?php echo h(u($id)); ?>
+                        <?php $subject = find_subject_by_id($page['subject_id']); ?>
+                        <label>Subject: </label>  <strong><?php echo h($subject['menu_name']); ?></strong>
                       </div>
-                        <label>Page Title:</label>  <?php echo h(u($manu_name)); ?>
+
+                      <div class="form-group"> 
+                        <label>Page:</label>  <b><?php echo h($page['menu_name']); ?></b>
                       </div>
+                      
                       <div class="form-group">
-                        <label>Page Body:</label>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, commodi? Omnis rerum laborum qui nisi libero a nemo ab repellat illum? Dicta vero odit nihil ullam ipsa sed quibusdam totam.</p>
+                        <label>Position: </label>  <?php echo h($page['position']); ?>
                       </div>
-                      <div class="form-group">
-                        <label>Position</label>  <?php echo h(u($position)); ?>
-                      </div>
+
                       <div class="form-group">
                         <label>Published: </label> <?php
-                                                      if(h(u($visible)) == 1){
+                                                      if(h($page['visible']) == 1){
                                                         echo 'Yes';
-                                                        }else{ echo 'No';
-                                                        };
-                                                      ?>
+                                                      }else{
+                                                        echo 'No';
+                                                      };
+                                                      ?>  
                       </div> 
-                    <div class="row">
-                      <div class="col-8">
-                        <a class="btn" href="<?php echo url_for('/staff/pages/edit.php?id=' . h(u($id))); ?>">Edit</a>   
-                      </div>
-                      <div class="col-4 text-right">
-                        <a class="btn btn-outline-danger" href="<?php echo url_for('/staff/pages/delete.php?id=' . h(u($id))); ?>" onclick="return confirm('Are you sure?');">Delete</a>   
-                      </div>
-                    </div>  
+                      <div class="form-group">
+                        <label>Page Body: </label>
+                        <hr> 
+                            <p><?php echo $page['content']; ?></p>
+                        <hr> 
+                      </div>                      
                   </form>
 
                     

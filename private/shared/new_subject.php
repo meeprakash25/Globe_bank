@@ -1,5 +1,11 @@
-<!--Add Subject-->
-        <div id="add-ubject" class="modal fade" role="dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<?php
+  $subject_count = count_all_subjects() + 1;
+  $subject = [];
+  $subject["position"] = $subject_count; //for the last number to be selected in options dropdown
+?>
+
+<!--Modal Add Subject-->
+        <div id="add-subject" class="modal fade" role="dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <form action="<?php echo url_for('/staff/subjects/create.php') ?>" method="post">
@@ -15,10 +21,15 @@
                         <div class="form-group">
                           <label>Position</label>
                           <select class="custom-select" name="position">
-                            <option selected>Select</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
+                            <?php
+                              for($i=1; $i <= $subject_count; $i++) {
+                                echo "<option value=\"{$i}\"";
+                                if($subject["position"] == $i) {
+                                  echo " selected";
+                                }
+                                echo ">{$i}</option>";
+                              }
+                            ?>
                           </select>
                         </div>
                         <div class="form-group">
@@ -29,8 +40,8 @@
                       </div>
                     </div>
                   <div class="modal-footer">
-                  <button type="button" class="btn" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn">Create Subject</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn">Create Subject</button>
                 </div>
               </form>
             </div>

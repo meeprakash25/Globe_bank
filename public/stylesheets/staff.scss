@@ -9,11 +9,34 @@ $nav-background-color: #ac0000c7;
 $border-color: #007599; //  navbar only
 $button-background-color:#e74c3c;
 $button-border-color:#c0392b;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Poppins;
+}
+
+p {
+    font-family: Roboto;
+}
+
+.btn:focus,
+.btn:active {
+    box-shadow: none;
+}
+
+body .content {
+    font-family: Roboto;
+}
+
 body .navbar-custom {
     background-color: $nav-background-color;
     border-color: #c0392b;
     border-bottom: 3px solid $border-color;
     width: 100%;
+    font-family: poppins;
     .navbar-brand {
         color: #ffffffcc;
     }
@@ -122,19 +145,18 @@ body {
             text-align: center;
         }
     }
-    form select {
-        option {
-            color: $link-color;
-            background-color: $button-background-color;
-            opacity: .8;
-        }
-        option:focus,
-        option:active,
-        option:hover{
-            color: $link-hover-focus-color;
-            background-color: $link-background-color;
-        }
-    }
+    // form select {
+    //     option {
+    //         color: #000000;
+    //         background-color: $button-background-color;
+    //         opacity: .8;
+    //     }
+        
+    //     option:hover {
+    //         color: $link-hover-focus-color!important;
+    //         background-color: $link-background-color!important;
+    //     }
+    // }
     #header div#dropdown-menu {
         background-color: #e74c3c;
         .divider {
