@@ -1,2 +1,2 @@
 # Globe_bank
-content management system
+Content management system
