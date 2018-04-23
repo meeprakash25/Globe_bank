@@ -56,7 +56,7 @@
                       <button type="button" class="btn" data-dismiss="modal">Close</button>
                     </div>
                     <div class="form-group">
-                      <button type="submit" name="submit_subject" class="btn">Create Page</button>
+                      <button type="submit" name="submit_subject" class="btn">Create Subject</button>
                     </div>
                 </div>
               </form>
