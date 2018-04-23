@@ -16,6 +16,20 @@
     <link rel="stylesheet" href="<?php echo url_for('/stylesheets/staff.css') ?>" media="all">
     <script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>
 
+     <!-- if session errors are set show the form modal again -->
+    <?php if (isset($_SESSION['errors'])) {; ?>
+    <?php if ((isset($_SESSION['form'])) && ($_SESSION['form'] === 'submit_subject')) {; ?>
+      <script type="text/javascript">
+          <?php echo "window.onload = function(){ document.getElementById(\"subject\").click(); }"; ?>
+      </script>
+
+    <?php } elseif ((isset($_SESSION['form'])) && ($_SESSION['form'] === 'submit_page')) {; ?>
+      <script type="text/javascript">
+          <?php echo "window.onload = function(){ document.getElementById(\"page\").click(); }"; ?>
+      </script>
+    <?php } ?>
+    <?php } ?>
+
   </head>
 
   <body>
@@ -84,9 +98,9 @@
               </a>
 
               <div class="dropdown-menu dropdown-menu-right px-1"  id="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                <a class="dropdown-item" data-toggle="modal" href="#add-subject">Create Subject</a>
-                <a class="dropdown-item" data-toggle="modal" href="#add-page">Create Page</a>
-                <a class="dropdown-item" data-toggle="modal" data-target="#add-dmin" href="#addAdmin">Create Admin</a>
+                <a class="dropdown-item" id="subject" data-toggle="modal" href="#add-subject">Create Subject</a>
+                <a class="dropdown-item" id="page" data-toggle="modal" href="#add-page">Create Page</a>
+                <a class="dropdown-item" id="admin" data-toggle="modal" data-target="#add-dmin" href="#addAdmin">Create Admin</a>
               </div>
             </div>
           </div>
@@ -107,7 +121,7 @@
                 <div class="col-4 text-right">
                   <!-- <a class="btn btn-sm btn-outline-danger" data-toggle="modal" href="#new">Create Subject</a> -->
                 </div>
-            
+
           </div>
         </section>
 

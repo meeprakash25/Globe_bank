@@ -15,31 +15,37 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
           </div>
           <div class="modal-body">
-            <div class="form-group">
-                  <label>Subject</label>
-                   <select class="custom-select" name="subject_id">
-                     <?php
-                        $subject_set = find_all_subjects();
-                        while($subject = mysqli_fetch_assoc($subject_set)) {
+            <!-- display errors -->
+            <?php if ((isset($_SESSION['form'])) && ($_SESSION['form'] === 'submit_page')) {; ?>
+              <?php errors(); ?>
+              <?php echo display_errors($errors); ?>
+            <?php } ?>
 
-                          echo "<option value=\"" .h($subject['id']) . "\"";
-                          if($page['subject_id'] == $subject['id']) {
-                            
-                            echo " selected";
-                          }
-                          echo ">" . h($subject['menu_name']) . "</option>";
+            <div class="form-group">
+                 <label>Subject</label>
+                 <select class="custom-select" name="subject_id">
+                   <?php
+                      $subject_set = find_all_subjects();
+                      while($subject = mysqli_fetch_assoc($subject_set)) {
+
+                        echo "<option value=\"" .h($subject['id']) . "\"";
+                        if($page['subject_id'] == $subject['id']) {
+
+                          echo " selected";
                         }
-                        mysqli_free_result($subject_set);
-                      ?>
-                    </select>
-                  </div>
+                        echo ">" . h($subject['menu_name']) . "</option>";
+                      }
+                      mysqli_free_result($subject_set);
+                    ?>
+                  </select>
+                </div>
                 <div class="form-group">
                   <label>Page Title</label>
-                  <input type="text" name="menu_name" class="form-control" placeholder="Page Title">
+                  <input type="text" name="menu_name" class="form-control" value="<?php if ((isset($_SESSION['form'])) && ($_SESSION['form'] === 'submit_page')) { echo $_SESSION['menu_name'];} ?>">
                 </div>
                 <div class="form-group">
                   <label>Page Body</label>
-                  <textarea name="content" class="form-control new_page_body" placeholder="Page Body"></textarea>
+                  <textarea name="content" class="form-control new_page_body"><?php if ((isset($_SESSION['form'])) && ($_SESSION['form'] === 'submit_page')) { echo $_SESSION['content'];} ?></textarea>
                 </div>
                 <div class="form-group">
                   <label>Position</label>
@@ -59,13 +65,15 @@
                   <div class="form-group">
                     <label>
                       <input type="hidden" name="visible" value="0" />
-                      <input type="checkbox" name="visible" value="1" checked /> Published
+                      <input type="checkbox" name="visible" value="1"  <?php if((isset($_SESSION['form'])) && ($_SESSION['form'] === 'submit_page') && ($_SESSION['visible'] == 1)) {echo " checked";} ?> /> Published
                     </label>
                   </div>
+
+
                 </div>
                 <div class="modal-footer">
                   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn">Create Page</button>
+                  <button type="submit" name="submit_page" class="btn">Create Page</button>
                 </div>
         </form>
       </div>

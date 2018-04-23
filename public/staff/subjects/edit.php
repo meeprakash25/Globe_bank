@@ -1,28 +1,30 @@
 <?php require_once('../../../private/initialize.php'); ?>
 
-<?php 
-  if(!isset($_GET['id'])){
-    redirect_to(url_for('/staff/subjects/index.php'));
+<?php
+  if (!isset($_GET['id'])) {
+      redirect_to(url_for('/staff/subjects/index.php'));
   }
 
   $id = $_GET['id'];
+  if (is_post_request()) {
+      //process form request
+      $subject = [];
+      $subject['id'] = $id;
+      $subject['menu_name'] = $_POST['menu_name'] ?? '';
+      $subject['position'] = $_POST['position'] ?? '';
+      $subject['visible'] = $_POST['visible'] ?? '';
 
-  if(is_post_request()){  
-    //process form request
-    $subject = [];
-    $subject['id'] = $id;
-    $subject['menu_name'] = $_POST['menu_name'] ?? '';
-    $subject['position'] = $_POST['position'] ?? '';
-    $subject['visible'] = $_POST['visible'] ?? '';
-    
-    $result = update_subject($subject);
-    redirect_to(url_for('/staff/subjects/show.php?id=' . $id));
-
-  }else{
+      $result = update_subject($subject);
+      if ($result === true) {
+          redirect_to(url_for('/staff/subjects/show.php?id=' . $id));
+      } else {
+          // $errors = $result;
+          // var_dump($errors);
+      }
+  } else {
       $subject = find_subject_by_id($id);
-
-      $subject_count = count_all_subjects();
   }
+  $subject_count = count_all_subjects();
 ?>
 
 <?php $page_title = 'Subject'; ?>
@@ -33,7 +35,10 @@
                 <div class="card-header main-color-bg">Edit Subject: </div>
                 <div class="card-body">
 
-                    <form action="<?php echo url_for('/staff/subjects/edit.php?id=' . h(u($id))); ?>" method="post">    
+                    <!-- display errors -->
+                    <?php echo display_errors($errors); ?>
+
+                    <form action="<?php echo url_for('/staff/subjects/edit.php?id=' . h(u($id))); ?>" method="post">
                       <div class="form-group">
                         <label>Subject Title</label>
                         <input type="text" name="menu_name" class="form-control" placeholder="Subject Title" value="<?php echo h($subject['menu_name']); ?>">
@@ -41,37 +46,39 @@
                       <div class="form-group">
                         <label>Position</label>
                         <select class="custom-select" name="position">
-                        <?php 
-                          for ($i=1; $i <= $subject_count; $i++) { 
-                            echo "<option value=\"{$i}\"";
-                            if ($subject['position'] == $i) {
-                              echo " selected";
-                            }
-                            echo ">{$i}</option>";
+                        <?php
+                          for ($i=1; $i <= $subject_count; $i++) {
+                              echo "<option value=\"{$i}\"";
+                              if ($subject['position'] == $i) {
+                                  echo " selected";
+                              }
+                              echo ">{$i}</option>";
                           }
                         ?>
-                       
+
                         </select>
                       </div>
                       <div class="form-group">
                         <label>
                             <input type="hidden" name="visible" value="0" />
-                            <input type="checkbox" name="visible" value="1" <?php if($subject['visible'] == "1") { echo "checked";}; ?> /> Published
-                            
+                            <input type="checkbox" name="visible" value="1" <?php if ($subject['visible'] == "1") {
+                            echo "checked";
+                        }; ?> /> Published
+
                           </label>
-                    </div>   
+                    </div>
                     <div class="row">
                       <div class="col-8">
-                        <button type="submit" class="btn">Save</button>   
+                        <button type="submit" class="btn">Save</button>
                       </div>
                       <div class="col-4 text-right">
                         <!-- <a class="btn btn-outline-danger" href="delete.php?id=" onclick="return confirm('Are you sure?');">Delete</a>    -->
-                        <a class="btn" href="<?php echo url_for('/staff/subjects/index.php'); ?>">Cancel</a>   
+                        <a class="btn" href="<?php echo url_for('/staff/subjects/index.php'); ?>">Cancel</a>
                       </div>
-                    </div>                    
+                    </div>
                   </form>
 
-                    
+
                 </div>
             </div>
       </div>
@@ -82,4 +89,3 @@
 
 
 <?php include(SHARED_PATH . '/staff_footer.php') ?>
-

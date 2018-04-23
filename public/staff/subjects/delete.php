@@ -1,18 +1,16 @@
 <?php
   require_once('../../../private/initialize.php');
 
-  if(!isset($_GET['id'])) {
-    redirect_to(url_for('/staff/subjects/index.php'));
+  if (!isset($_GET['id'])) {
+      redirect_to(url_for('/staff/subjects/index.php'));
   }
   $id = $_GET['id'];
 
-  if(is_post_request()) {
-
-    $result = delete_subject($id);
-    redirect_to(url_for('/staff/subjects/index.php'));
-
+  if (is_post_request()) {
+      $result = delete_subject($id);
+      redirect_to(url_for('/staff/subjects/index.php'));
   } else {
-    $subject = find_subject_by_id($id);
+      $subject = find_subject_by_id($id);
   }
 
 ?>
@@ -25,20 +23,20 @@
                 <div class="card-header main-color-bg">Delete subject</div>
                 <div class="card-body">
 
-                    
-                  <h4>Are you sure you want tot delete this subject?</h4>
-                  <p><?php echo h($subject['menu_name']); ?></p>
-                  <form action="<?php echo url_for('/staff/subjects/delete.php?id=' . h(u($subject['id']))); ?>" method="post">   
+
+                  <h3>Are you sure you want to delete this subject?</h3>
+                  <strong><?php echo h($subject['menu_name']); ?></strong>
+                  <form action="<?php echo url_for('/staff/subjects/delete.php?id=' . h(u($subject['id']))); ?>" method="post">
                     <div class="row">
                       <div class="col-8">
-                        <a class="btn" href="<?php echo url_for('/staff/subjects/index.php'); ?>">Cancel</a>   
+                        <a class="btn" href="<?php echo url_for('/staff/subjects/index.php'); ?>">Cancel</a>
                       </div>
                       <div class="col-4 text-right">
-                        <button type="submit" class="btn" name="commit">Delete</button> 
+                        <button type="submit" class="btn" name="commit">Delete</button>
                       </div>
                     </div>
                   </form>
-                    
+
                 </div>
             </div>
       </div>

@@ -1,12 +1,13 @@
 <?php require_once('../../../private/initialize.php'); ?>
 
-<?php 
-    if(!isset($_GET['id'])){
+<?php
+    if (empty($_GET['id'])) {
         redirect_to(url_for('/staff/subjects/index.php'));
-      }
+    }
       $id = $_GET['id'];
 
       $subject = find_subject_by_id($id);
+      $show = '';
 
 ?>
 
@@ -26,26 +27,26 @@
                         <div class="col-4 text-right">
                           <a class="btn" href="<?php echo url_for('/staff/subjects/delete.php?id=' . h(u($id))); ?>">Delete</a>
                         </div>
-                      </div> 
+                      </div>
                       <hr>
-                      <div class="form-group"> 
-                        <label>Subject:</label> <b><?php echo h($subject['menu_name']); ?></b>
+                      <div class="form-group">
+                        <label>Subject:</label> <strong><?php echo h($subject['menu_name']); ?></strong>
                       </div>
                       <div class="form-group">
                         <label>Position:</label> <?php echo h($subject['position']); ?>
                       </div>
                       <div class="form-group">
                         <label>Published: </label> <?php
-                                                      if(h($subject['visible']) == 1){
-                                                        echo 'Yes';
-                                                        }else{
+                                                      if (h($subject['visible']) == 1) {
+                                                          echo 'Yes';
+                                                      } else {
                                                           echo 'No';
-                                                        };
-                                                    ?>                      
-                      </div> 
-                    
+                                                      };
+                                                    ?>
+                      </div>
+
                   </form>
-                    
+
                 </div>
             </div>
       </div>
@@ -54,4 +55,3 @@
 </section>
 
 <?php include(SHARED_PATH . '/staff_footer.php') ?>
-

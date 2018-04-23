@@ -129,12 +129,15 @@ body {
             background-color: $button-background-color;
             border-color: $button-border-color;
         }
-        button:focus,
-        button:hover {
+        button.btn:focus,
+        button.btn:hover
+
+        {
             color: $link-hover-focus-color;
             background-color: $link-background-color;
         }
-        button {
+        button.btn
+        {
             color: $link-hover-focus-color;
             background-color: $button-background-color;
             border-color: $button-border-color;
@@ -151,7 +154,7 @@ body {
     //         background-color: $button-background-color;
     //         opacity: .8;
     //     }
-        
+
     //     option:hover {
     //         color: $link-hover-focus-color!important;
     //         background-color: $link-background-color!important;
