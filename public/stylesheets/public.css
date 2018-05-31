@@ -11,6 +11,10 @@ p {
 	font-family: Roboto;
 }
 
+.selected {
+	color: #f07b27 !important;
+}
+
 .btn:focus,
 .btn:active {
 	box-shadow: none;
@@ -162,7 +166,7 @@ body div div a:hover {
 }
 
 body .footer {
-	background-color: #e74c3c;
+	background-color: #e03e52;
 	border-color: #007599;
 	text-align: center;
 	color: #d7e2e9;
@@ -187,10 +191,10 @@ body .footer a:hover {
 
 /* Header */
 #header {
-	background: #e74c3c;
+	background: #e03e52;
 	color: #e1e1e1;
-	padding-top: 15px;
-	padding-bottom: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
 	margin-top: 0;
 }
 
@@ -199,7 +203,7 @@ body .footer a:hover {
 }
 
 #header div#dropdown-menu .divider {
-	background-color: #ac0000c7;
+	background-color: #e03e52;
 }
 
 #header div#dropdown-menu a {

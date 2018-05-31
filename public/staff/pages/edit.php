@@ -38,7 +38,7 @@
 
       <div class="col-md-9">
             <div class="card">
-                <div class="card-header main-color-bg">Edit Page: </div>
+                <div class="card-header main-color-bg">Edit Page: <?php echo h($page['menu_name']); ?></div>
                 <div class="card-body">
 
                     <form action="<?php echo url_for('/staff/pages/edit.php?id=' . h(u($id))); ?>" method="post">

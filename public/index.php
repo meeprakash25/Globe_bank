@@ -1,15 +1,35 @@
-<!doctype html>
+<?php require_once('../private/initialize.php'); ?>
 
-<html lang="en">
-  <head>
-    <title>GBI</title>
-    <meta charset="utf-8">
-  </head>
+<?php
+  if(isset($_GET['id'])) {
+    $page_id = $_GET['id'];
+    $page = find_page_by_id($page_id);
+    if(!$page){
+      redirect_to(url_for('/index.php'));
+    }
+    $subject_id = $page['subject_id'];
+  } else {
+    //nothing selected; show the homepage
+  }
+?>
 
+<?php include(SHARED_PATH . '/public_header.php'); ?>
 
-  <body>
+<div id="main">
 
+  <div id="page">
 
+    <?php if (isset($page)) {
+            //show the page from the database
+            // TODO add html escaping back in
+            echo $page['content'];
+          } else {
+            include(SHARED_PATH . '/static_homepage.php');
+          }
+    ?>
 
-  </body>
-</html>
+  </div>
+
+</div>
+
+<?php include(SHARED_PATH . '/public_footer.php'); ?>
