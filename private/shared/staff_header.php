@@ -7,9 +7,11 @@
 <html lang="en">
   <head>
     <title>GBI Staff - <?php echo $page_title; ?></title>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <link rel="stylesheet" href="<?php echo url_for('/stylesheets/bootstrap.min.css'); ?>" media="all">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo url_for('/stylesheets/google-fonts.css') ?>" media="all">
@@ -37,7 +39,7 @@
     <nav class="navbar navbar-expand-md navbar-custom py-0 sticky-top" id="my-navbar">
       <div class="container">
         <a class="navbar-brand" href="<?php echo url_for('/staff/index.php'); ?>">
-          <img src="<?php echo url_for('/images/google.svg'); ?>" width="20" height="20" alt="">
+          <img src="<?php echo url_for('/images/globebank02.png'); ?>" width="20" height="20" alt="">
           Globe Bank
         </a>
         <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"
@@ -120,7 +122,7 @@
                   <?php echo h($page_title); ?>
                 </div>
                 <div class="col-8 col-sm-7 col-md-6 col-lg-4">
-                  <?php                    
+                  <?php
                     echo display_info(info());
                   ?>
                 </div>

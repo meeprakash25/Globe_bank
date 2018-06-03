@@ -5,13 +5,19 @@
   $page_id = $page_id ?? '';
   $subject_id = $subject_id ?? '';
   $page_title = $page['menu_name'] ?? '';
+  $visible = $visible ?? true;
 ?>
 <!doctype html>
 
 <html lang="en">
   <head>
-    <title>Globe Bank <?php if(!empty($page_title)) { echo '- ' . $page_title; } ?></title>
+    <title>Globe Bank <?php if(!empty($page_title)) { echo '- ' . h($page_title); } ?>
+    <?php if(isset($preview) && $preview){ echo ' [PREVIEW]'; } ?></title>
+    
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <link rel="stylesheet" href="<?php echo url_for('/stylesheets/bootstrap.min.css'); ?>" media="all">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo url_for('/stylesheets/google-fonts.css') ?>" media="all">
@@ -28,7 +34,7 @@
     }
     .dropdown-toggle:after { content: none; }
     </style>
-    
+
   </head>
 
 
@@ -49,7 +55,7 @@
         <div class="collapse navbar-collapse" id="collapsibleNavbar">
           <!-- Nav items -->
 
-          <?php $nav_subjects = find_all_visible_subjects(); ?>
+          <?php $nav_subjects = find_all_subjects(['visible' => $visible]); // $visible = true; declared at the top ?>
 
           <ul class="navbar-nav ml-auto">
             <!-- <li class="nav-item">
@@ -62,7 +68,7 @@
                 <a class="text-left p-2 rounded btn-block dropdown-toggle <?php if($nav_subject['id'] == $subject_id) { echo "subject-selected"; } ?>" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <?php echo h($nav_subject['menu_name']); ?>
                 </a>
-                <?php $nav_pages = find_pages_by_subject_id($nav_subject['id']); ?>
+                <?php $nav_pages = find_pages_by_subject_id($nav_subject['id'], ['visible' => $visible]); // $visible = true; declared at the top?>
                 <div class="dropdown-menu dropdown-menu-left m-0" aria-labelledby="dropdownMenuLink">
 
                   <?php while($nav_page = mysqli_fetch_assoc($nav_pages)) { ?>
@@ -89,11 +95,9 @@
       <div class="container">
         <div class="row">
           <div class="col-8">
-            <h1>
-              <a href="<?php echo url_for('/index.php'); ?>">
-                <img class="img-fluid d-block animated slideinLeft"  src="<?php echo url_for('/images/gbi_logo.png'); ?>" width="250" alt="" />
+              <a style="display:inline-block;" href="<?php echo url_for('/index.php'); ?>">
+                <img class="img-fluid d-block" src="<?php echo url_for('/images/gbi_logo.png'); ?>" width="250" alt="" />
               </a>
-            </h1>
           </div>
 
           <div class="col-4 text-right">

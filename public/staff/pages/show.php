@@ -19,11 +19,14 @@
 
                     <form action="<?php echo url_for('/staff/pages/edit.php?id=' . h(u($id))); ?>" method="post">
                       <div class="row">
-                        <div class="col-8">
-                          <a class="btn" href="<?php echo url_for('/staff/pages/edit.php?id=' . h(u($id))); ?>">Edit</a>
+                        <div class="col-4 text-left">
+                          <a class="btn btn-sm" href="<?php echo url_for('/staff/pages/edit.php?id=' . h(u($id))); ?>">Edit</a>
+                        </div>
+                        <div class="col-4 text-center">
+                          <a class="btn btn-sm" href="<?php echo url_for('/index.php?id=' . h(u($id)) . '&preview=true'); ?>" target="_blank">Preview</a>
                         </div>
                         <div class="col-4 text-right">
-                          <a class="btn" href="<?php echo url_for('/staff/pages/delete.php?id=' . h(u($id))); ?>">Delete</a>
+                          <a class="btn btn-sm" href="<?php echo url_for('/staff/pages/delete.php?id=' . h(u($id))); ?>">Delete</a>
                         </div>
                       </div>
                       <hr>
@@ -51,7 +54,7 @@
                       </div>
                       <div class="form-group">
                         <label>Page Body: </label>
-                            <?php echo $page['content']; ?>
+                            <?php echo h($page['content']); ?>
                       </div>
                     </form>
 

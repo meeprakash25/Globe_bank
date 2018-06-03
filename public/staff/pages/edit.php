@@ -20,7 +20,7 @@
 
       $result = update_page($page);
       if ($result === true) {
-        $_SESSION['info'] = "Page created successfully";
+        $_SESSION['info'] = "Page edited successfully";
         redirect_to(url_for('/staff/pages/show.php?id=' . $id));
       } else {
           // $errors = $result;

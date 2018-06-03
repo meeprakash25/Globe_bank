@@ -1,21 +1,13 @@
 <?php
-  function find_all_subjects()
+  function find_all_subjects($options=[])
   {
       global $db;
 
+      $visible = $options['visible'] ?? false;
       $sql = "SELECT * FROM subjects ";
-      $sql .= "ORDER BY position ASC;";
-      $result = mysqli_query($db, $sql);
-      confirm_result_set($result, $sql);
-      return $result;
-  }
-
-  function find_all_visible_subjects()
-  {
-      global $db;
-
-      $sql = "SELECT * FROM subjects ";
-      $sql .= "WHERE visible='" . db_escape($db, 1) . "' ";
+      if($visible){
+        $sql .= "WHERE visible = true ";
+      }
       $sql .= "ORDER BY position ASC;";
       $result = mysqli_query($db, $sql);
       confirm_result_set($result, $sql);
@@ -24,7 +16,7 @@
 
   function count_all_subjects()
   {
-      $subject_set = find_all_subjects();
+      $subject_set = find_all_subjects(['visible'=>false]);
       $subject_count = mysqli_num_rows($subject_set);
       return $subject_count;
       mysqli_free_result($subject_set);
@@ -64,7 +56,7 @@
   // to check if subjects has pages or not before deletion
   function has_children($id){
     global $errors;
-    
+
     $page_count = count_pages_by_subject_id($id);
     if($page_count > 0){
         $errors[] = "Cannot delete a Subject with Page(s)";
@@ -72,12 +64,17 @@
   }
 
 
-  function find_subject_by_id($id)
+  function find_subject_by_id($id, $options=[])
   {
       global $db;
 
+      $visible = $options['visible'] ?? false;
+
       $sql = "SELECT * FROM subjects ";
-      $sql .= "WHERE id='" . db_escape($db, $id) . "'";
+      $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
+      if($visible){
+        $sql .= "AND visible = true";
+      }
       $result = mysqli_query($db, $sql);
       confirm_result_set($result);
 
@@ -191,12 +188,17 @@
   }
 
 
-  function find_page_by_id($id)
+  function find_page_by_id($id, $options=[])
   {
       global $db;
 
+      $visible = $options['visible'] ?? false;
+
       $sql = "SELECT * FROM pages ";
-      $sql .= "WHERE id='" . db_escape($db, $id) . "'";
+      $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
+      if($visible){
+        $sql .= "AND visible = true";
+      }
       $result = mysqli_query($db, $sql);
       confirm_result_set($result);
       $page = mysqli_fetch_assoc($result);
@@ -204,12 +206,17 @@
       return $page; // returns an assoc. array
   }
 
-  function find_pages_by_subject_id($subject_id)
+  function find_pages_by_subject_id($subject_id, $options = [])
   {
       global $db;
 
+      $visible = $options['visible'] ?? false;
+
       $sql = "SELECT * FROM pages ";
       $sql .= "WHERE subject_id='" . db_escape($db, $subject_id) . "' ";
+      if($visible){
+        $sql .= "AND visible = true ";
+      }
       $sql .= "ORDER BY position ASC;";
       $result = mysqli_query($db, $sql);
       confirm_result_set($result, $sql);
@@ -218,7 +225,7 @@
 
   function count_pages_by_subject_id($id)
   {
-      $page_set = find_pages_by_subject_id($id);
+      $page_set = find_pages_by_subject_id($id, ['visible'=>false]);
       $page_count = mysqli_num_rows($page_set);
       return $page_count;
       mysqli_free_result($page_set);
