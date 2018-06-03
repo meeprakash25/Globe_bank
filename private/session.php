@@ -1,6 +1,7 @@
 <?php
 session_start();
   $errors = [];
+  $info = '';
 // function session_message()
 // {
 //     if (isset($_SESSION["session_message"])) {
@@ -28,6 +29,16 @@ function errors()
         //display only once, dissappears on reload
         $_SESSION["errors"] = null;
 
+    }
+}
+function info()
+{
+    if (isset($_SESSION["info"])) {
+      // global $infos;
+        $info = $_SESSION["info"];
+        //display only once, dissappears on reload
+        $_SESSION["info"] = null;
+        return $info;
     }
 }
 

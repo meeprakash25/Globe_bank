@@ -13,12 +13,12 @@
         <?php $_SESSION['position'] = ''; ?>
         <?php $_SESSION['visible'] = ''; ?>
 
-        <script>
+        <!-- <script>
           CKEDITOR.replace( 'content' );
-        </script>
+        </script> -->
 
       </div>
-      <div class="footer footer-copyright py-3 text-center">
+      <div class="footer footer-copyright py-3 mt-3 text-center">
         &copy; <?php echo Date("Y"); ?>, <a href="<?php echo url_for('/staff/index.php'); ?>">Globe Bank</a>
       </div>
 

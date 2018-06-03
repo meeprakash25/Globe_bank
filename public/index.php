@@ -15,9 +15,7 @@
 
 <?php include(SHARED_PATH . '/public_header.php'); ?>
 
-<div id="main">
-
-  <div id="page">
+  <div class="container mt-3" id="page">
 
     <?php if (isset($page)) {
             //show the page from the database
@@ -29,7 +27,5 @@
     ?>
 
   </div>
-
-</div>
 
 <?php include(SHARED_PATH . '/public_footer.php'); ?>

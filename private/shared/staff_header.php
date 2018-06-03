@@ -6,7 +6,7 @@
 
 <html lang="en">
   <head>
-    <title>GBI - <?php echo $page_title; ?></title>
+    <title>GBI Staff - <?php echo $page_title; ?></title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo url_for('/stylesheets/google-fonts.css') ?>" media="all">
     <link rel="stylesheet" href="<?php echo url_for('/stylesheets/staff.css') ?>" media="all">
-    <script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>
+    <!-- <script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script> -->
 
      <!-- if session errors are set show the form modal again -->
     <?php if (isset($_SESSION['errors'])) {; ?>
@@ -42,6 +42,7 @@
         </a>
         <button class="navbar-toggler custom-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"
         aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
+          <span>
           <i class="fa fa-bars"></i>
           </span>
         </button>
@@ -89,7 +90,7 @@
                   } else {
                     echo $page_title;
                   }?>
-           <h6></small></h4>
+           </h6></small></h4>
           </div>
           <div class="col-4 text-right">
             <div class="dropdown show">
@@ -115,11 +116,13 @@
       <section class="breadcrumb" id="breadcrumb">
           <div class="container">
               <div class="row">
-                <div class="col-8">
+                <div class="col-4 col-sm-5 col-md-6 col-lg-8">
                   <?php echo h($page_title); ?>
                 </div>
-                <div class="col-4 text-right">
-                  <!-- <a class="btn btn-sm btn-outline-danger" data-toggle="modal" href="#new">Create Subject</a> -->
+                <div class="col-8 col-sm-7 col-md-6 col-lg-4">
+                  <?php                    
+                    echo display_info(info());
+                  ?>
                 </div>
 
           </div>

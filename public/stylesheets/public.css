@@ -11,8 +11,14 @@ p {
 	font-family: Roboto;
 }
 
-.selected {
-	color: #f07b27 !important;
+.subject-selected {
+	background-color: #ba00008f;
+	opacity: 0.8;
+}
+
+.page-selected {
+	background-color: #ba0000c7;
+	opacity: 0.7;
 }
 
 .btn:focus,
@@ -27,7 +33,7 @@ body .content {
 body .navbar-custom {
 	background-color: #ac0000c7;
 	border-color: #c0392b;
-	border-bottom: 3px solid #007599;
+	border-bottom: 2px solid #038c87;
 	width: 100%;
 	font-family: poppins;
 }
@@ -49,13 +55,11 @@ body .navbar-custom .navbar-nav li a {
 	color: #d7e2e9;
 }
 
-body .navbar-custom .navbar-nav li a:focus,
 body .navbar-custom .navbar-nav li a:hover {
 	color: #ffffff;
 	background-color: #cc1400 !important;
 }
 
-body .navbar-custom .navbar-nav li a.highlight:focus,
 body .navbar-custom .navbar-nav li a.highlight:hover,
 body .navbar-custom .navbar-nav li a:active {
 	color: #ffffff;
@@ -84,14 +88,13 @@ body .navbar-custom .navbar-nav li div .dropdown-menu a {
 	color: #d7e2e9;
 }
 
-body .navbar-custom .navbar-nav li div .dropdown-menu a:focus,
 body .navbar-custom .navbar-nav li div .dropdown-menu a:hover {
 	color: #ffffff;
 	background-color: #ba0000c7;
 }
 
 body .navbar-custom .navbar-toggle {
-	border-color: #007599;
+	border-color: #038c87;
 }
 
 body .navbar-custom .navbar-toggle :focus,
@@ -105,7 +108,7 @@ body .navbar-custom .navbar-toggle .icon-bar {
 
 body .navbar-custom .navbar-collapse,
 body .navbar-custom .navbar-form {
-	border-color: #007599;
+	border-color: #038c87;
 }
 
 body .navbar-custom .custom-toggler {
@@ -116,58 +119,22 @@ body .navbar-custom .custom-toggler {
 
 body .navbar-custom .custom-toggler:hover {
 	background-color: #ba0000c7;
-	border-color: #007599;
+	border-color: #038c87;
 	color: #d7e2e9;
-}
-
-body .content table a:focus,
-body .content table a:hover,
-body .content form a:focus,
-body .content form a:hover {
-	color: #ffffff;
-	background-color: #ba0000c7;
-}
-
-body .content table a,
-body .content form a {
-	color: #d7e2e9;
-	background-color: #e74c3c;
-	border-color: #c0392b;
-}
-
-body .content table button.btn:focus,
-body .content table button.btn:hover,
-body .content form button.btn:focus,
-body .content form button.btn:hover {
-	color: #ffffff;
-	background-color: #ba0000c7;
-}
-
-body .content table button.btn,
-body .content form button.btn {
-	color: #ffffff;
-	background-color: #e74c3c;
-	border-color: #c0392b;
-}
-
-body table tr {
-	text-align: center;
 }
 
 body div div a {
-	color: #d7e2e9;
+	color: #ba0000c7;
 }
 
-body div div a:focus,
 body div div a:hover {
 	text-decoration: none;
-	color: #ffffff;
-	background-color: #ba0000c7;
+	color: #f07b27;
 }
 
 body .footer {
 	background-color: #e03e52;
-	border-color: #007599;
+	border-color: #038c87;
 	text-align: center;
 	color: #d7e2e9;
 	width: 100%;
@@ -203,7 +170,7 @@ body .footer a:hover {
 }
 
 #header div#dropdown-menu .divider {
-	background-color: #e03e52;
+	background-color: #ac0000c7;
 }
 
 #header div#dropdown-menu a {
@@ -250,9 +217,48 @@ body .footer a:hover {
 	margin-top: 10px;
 }
 
+@media (max-width: 3999px) {
+	#page {
+		font-size: 1.9em !important;
+	}
+}
+
+@media (max-width: 2999px) {
+	#page {
+		font-size: 1.7em !important;
+	}
+}
+
+@media (max-width: 1999px) {
+	#page {
+		font-size: 1.5em !important;
+	}
+}
+
+@media (max-width: 1599px) {
+	#page {
+		font-size: 1em !important;
+	}
+}
+
+@media (max-width: 1199px) {
+	#page {
+		font-size: 1em !important;
+	}
+}
+
 @media (max-width: 992px) {
 	body table tr .hide-btn {
 		display: none;
+	}
+	#page {
+		font-size: 1em !important;
+	}
+	#page h4, #page h5, #page h6 {
+		font-size: 1.5em !important;
+	}
+	#page h1, #page h2, #page h3 {
+		font-size: 1.8em !important;
 	}
 }
 
@@ -263,6 +269,15 @@ body .footer a:hover {
 	body table tr .hide-name {
 		display: none;
 	}
+	#page {
+		font-size: 0.9em !important;
+	}
+	#page h4, #page h5, #page h6 {
+		font-size: 1.5em !important;
+	}
+	#page h1, #page h2, #page h3 {
+		font-size: 1.8em !important;
+	}
 }
 
 @media (max-width: 376px) {
@@ -272,5 +287,14 @@ body .footer a:hover {
 	body table tr .hide-position,
 	body table tr .hide-name {
 		display: none;
+	}
+	#page {
+		font-size: .8em !important;
+	}
+	#page h4, #page h5, #page h6 {
+		font-size: 1.5em !important;
+	}
+	#page h1, #page h2, #page h3 {
+		font-size: 1.8em !important;
 	}
 }

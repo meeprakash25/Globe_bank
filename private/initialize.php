@@ -29,4 +29,4 @@
 
   $db = db_connect();
 
-  $subject_form_errors=[];
+  // $subject_form_errors=[];

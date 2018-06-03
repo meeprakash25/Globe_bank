@@ -15,9 +15,22 @@
     <link rel="stylesheet" href="<?php echo url_for('/stylesheets/bootstrap.min.css'); ?>" media="all">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="<?php echo url_for('/stylesheets/google-fonts.css') ?>" media="all">
-    <script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script>
+    <!-- <script src="https://cdn.ckeditor.com/4.9.1/standard/ckeditor.js"></script> -->
     <link rel="stylesheet" media="all" href="<?php echo url_for('/stylesheets/public.css'); ?>" />
+
+    <style>
+    .dropdown:hover .dropdown-menu {
+      display: block;
+    }
+    .dropdown .dropdown-toggle:active {
+      /*Without this, clicking will make it sticky*/
+      pointer-events: none;
+    }
+    .dropdown-toggle:after { content: none; }
+    </style>
+    
   </head>
+
 
   <body>
 
@@ -43,17 +56,17 @@
               <a class="btn text-left nav-link" href="<?php //echo url_for('/index.php'); ?>">Home<span class="sr-only">(current)</span></a>
             </li> -->
 
-            <?php while($nav_subject = mysqli_fetch_assoc($nav_subjects)){ ?>
+            <?php while($nav_subject = mysqli_fetch_assoc($nav_subjects)) { ?>
             <li class="nav-item">
               <div class="dropdown show">
-                <a class="text-left p-2 rounded btn-block dropdown-toggle <?php if($nav_subject['id'] == $subject_id) { echo "selected"; } ?>" href="<?php echo url_for('/index.php'); ?>" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="text-left p-2 rounded btn-block dropdown-toggle <?php if($nav_subject['id'] == $subject_id) { echo "subject-selected"; } ?>" href="#" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <?php echo h($nav_subject['menu_name']); ?>
                 </a>
                 <?php $nav_pages = find_pages_by_subject_id($nav_subject['id']); ?>
-                <div class="dropdown-menu dropdown-menu-left" aria-labelledby="dropdownMenuLink">
+                <div class="dropdown-menu dropdown-menu-left m-0" aria-labelledby="dropdownMenuLink">
 
-                  <?php while($nav_page = mysqli_fetch_assoc($nav_pages)){ ?>
-                      <a class="dropdown-item <?php if($nav_page['id'] == $page_id) { echo "selected"; } ?>" href="<?php echo url_for('/index.php?id=' . h(u($nav_page['id']))); ?>">
+                  <?php while($nav_page = mysqli_fetch_assoc($nav_pages)) { ?>
+                      <a class="dropdown-item <?php if($nav_page['id'] == $page_id) { echo "page-selected"; } ?>" href="<?php echo url_for('/index.php?id=' . h(u($nav_page['id']))); ?>">
                         <?php echo h($nav_page['menu_name']); ?>
                       </a>
                   <?php } // while nav_pages ?>
@@ -72,13 +85,13 @@
       </div>
     </nav>
 
-    <header id="header">
+    <header class="" id="header">
       <div class="container">
         <div class="row">
           <div class="col-8">
             <h1>
               <a href="<?php echo url_for('/index.php'); ?>">
-                <img src="<?php echo url_for('/images/gbi_logo.png'); ?>" width="298" height="71" alt="" />
+                <img class="img-fluid d-block animated slideinLeft"  src="<?php echo url_for('/images/gbi_logo.png'); ?>" width="250" alt="" />
               </a>
             </h1>
           </div>

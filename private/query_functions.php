@@ -61,6 +61,16 @@
       // return $errors;
   }
 
+  // to check if subjects has pages or not before deletion
+  function has_children($id){
+    global $errors;
+    
+    $page_count = count_pages_by_subject_id($id);
+    if($page_count > 0){
+        $errors[] = "Cannot delete a Subject with Page(s)";
+    }
+  }
+
 
   function find_subject_by_id($id)
   {
@@ -138,6 +148,12 @@
   function delete_subject($id)
   {
       global $db;
+      global $errors;
+
+      has_children($id);
+      if (!empty($errors)) {
+          return false;
+      }
 
       $sql = "DELETE FROM subjects ";
       $sql .= "WHERE id='" . db_escape($db, $id) . "' ";
@@ -200,13 +216,13 @@
       return $result; // returns result set
   }
 
-  // function count_pages_by_subject_id($id)
-  // {
-  //     $page_set = find_pages_by_subject_id($id);
-  //     $page_count = mysqli_num_rows($page_set);
-  //     return $page_count;
-  //     mysqli_free_result($page_set);
-  // }
+  function count_pages_by_subject_id($id)
+  {
+      $page_set = find_pages_by_subject_id($id);
+      $page_count = mysqli_num_rows($page_set);
+      return $page_count;
+      mysqli_free_result($page_set);
+  }
 
   function validate_page($page)
   {

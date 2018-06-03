@@ -20,6 +20,7 @@
 
       $result = update_page($page);
       if ($result === true) {
+        $_SESSION['info'] = "Page created successfully";
         redirect_to(url_for('/staff/pages/show.php?id=' . $id));
       } else {
           // $errors = $result;
@@ -92,7 +93,7 @@
                       </div>
                       <div class="form-group">
                         <label>Page Body</label>
-                        <textarea type="text" name="content" class="form-control" placeholder="Page Body"><?php echo h($page['content']); ?></textarea>
+                        <textarea type="text" name="content" class="form-control" placeholder="Page Body" rows="20"><?php echo h($page['content']); ?></textarea>
                       </div>
                       <div class="row">
                         <div class="col-8">

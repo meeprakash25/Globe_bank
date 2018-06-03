@@ -51,11 +51,9 @@
                       </div>
                       <div class="form-group">
                         <label>Page Body: </label>
-                        <hr>
-                            <p><?php echo $page['content']; ?></p>
-                        <hr>
+                            <?php echo $page['content']; ?>
                       </div>
-                  </form>
+                    </form>
 
 
                 </div>

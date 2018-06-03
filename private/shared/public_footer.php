@@ -1,4 +1,4 @@
-    <div class="footer footer-copyright py-3 text-center">
+    <div class="footer footer-copyright py-3 mt-3 text-center">
       &copy; <?php echo Date("Y"); ?>, <a href="<?php echo url_for('/index.php'); ?>">Globe Bank</a>
     </div>
 

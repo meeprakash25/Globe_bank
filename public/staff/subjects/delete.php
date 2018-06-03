@@ -8,7 +8,13 @@
 
   if (is_post_request()) {
       $result = delete_subject($id);
-      redirect_to(url_for('/staff/subjects/index.php'));
+      if ($result === true) {
+          $_SESSION['info'] = "Subject deleted successfully";
+          redirect_to(url_for('/staff/subjects/index.php'));
+      } else {
+        $subject = find_subject_by_id($id);
+          // show this page again
+      }
   } else {
       $subject = find_subject_by_id($id);
   }
@@ -22,11 +28,14 @@
             <div class="card">
                 <div class="card-header main-color-bg">Delete subject</div>
                 <div class="card-body">
+                  
+                  <!-- display errors -->
+                    <?php echo display_errors($errors); ?>
 
-
-                  <h3>Are you sure you want to delete this subject?</h3>
-                  <strong><?php echo h($subject['menu_name']); ?></strong>
+                  <h5>Are you sure you want to delete Subject: <strong><?php echo h($subject['menu_name']); ?></strong> ?</h5><br>
+                                    
                   <form action="<?php echo url_for('/staff/subjects/delete.php?id=' . h(u($subject['id']))); ?>" method="post">
+                  
                     <div class="row">
                       <div class="col-8">
                         <a class="btn" href="<?php echo url_for('/staff/subjects/index.php'); ?>">Cancel</a>

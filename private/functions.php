@@ -66,6 +66,18 @@
       }
       return $output;
   }
+
+  function display_info($info)
+  {
+      $output = '';
+      if (!empty($info)) {
+          $output .= "<div class=\"alert alert-info alert-dismissible text-center\" style=\"margin:0;padding:0;font-size: 14px; \">";
+          $output .= h($info);
+          $output .= "<button  class=\"close\" data-dismiss=\"alert\" style=\"margin:2px;padding:2px;font-size: 16px; \">&times;</button>";
+          $output .= "</div>";
+      }
+      return $output;
+  }
   //
   // function form_errors($errors=array()) {
 	// 	$output = "";
